@@ -18,11 +18,11 @@ public class LeoOpmode extends LinearOpMode {
 
         frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);*/
-        HardwareQueue hardwarequeue = new HardwareQueue();
-        PriorityMotor frontLeftMotor = new PriorityMotor((DCMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
-        PriorityMotor backLeftMotor = new PriorityMotor((DCMotorEx) hardwareMap.dcMotor.get("backLeftMotor"), "backLeftMotor", 1, 2, 1);
-        PriorityMotor frontRightMotor = new PriorityMotor((DCMotorEx) hardwareMap.dcMotor.get("frontRightMotor"), "frontRightMotor", 1, 2, -1);
-        PriorityMotor backRightMotor = new PriorityMotor((DCMotorEx) hardwareMap.dcMotor.get("backRightMotor"), "backRightMotor", 1, 2, -1);
+        HardwareQueue hardwareQueue = new HardwareQueue();
+        PriorityMotor frontLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
+        PriorityMotor backLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backLeftMotor"), "backLeftMotor", 1, 2, 1);
+        PriorityMotor frontRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontRightMotor"), "frontRightMotor", 1, 2, -1);
+        PriorityMotor backRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backRightMotor"), "backRightMotor", 1, 2, -1);
 
         hardwareQueue.addDevice(frontLeftMotor);
         hardwareQueue.addDevice(backLeftMotor);
@@ -52,7 +52,7 @@ public class LeoOpmode extends LinearOpMode {
             frontRightMotor.setTargetPower(frontRightPower);
             backRightMotor.setTargetPower(backRightPower);
 
-            harwarequeue.update();
+            hardwareQueue.update();
         }
     }
 }
