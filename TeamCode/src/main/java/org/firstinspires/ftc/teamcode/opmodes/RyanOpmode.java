@@ -1,17 +1,14 @@
 package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.utils.priority.HardwareQueue;
 import org.firstinspires.ftc.teamcode.utils.priority.PriorityMotor;
 
 @TeleOp (name = "Drivetrain sample code")
-public class MyOpmode extends LinearOpMode {
+public class RyanOpmode extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -31,14 +28,14 @@ public class MyOpmode extends LinearOpMode {
         PriorityMotor RealbackRightMotor = new PriorityMotor(backRightMotor, "backRightMotor", 1, 2, 1);
 
         Above was the original code, and it's a little bit easier to understand. One thing I had to add
-        to the original gm0 code was the (DcMotorEx). that way you can pass it in to the function.
+        to the original gm0 code was the (DcMotorEx). that way you can pass it in to the constructor.
         */
 
         HardwareQueue hardwareQueue = new HardwareQueue();
-        PriorityMotor RealfrontLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
-        PriorityMotor RealbackLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backLeftMotor"), "backLeftMotor", 1, 2, 1);
-        PriorityMotor RealfrontRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontRightMotor"), "frontRightMotor", 1, 2, -1);
-        PriorityMotor RealbackRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backRightMotor"), "backRightMotor", 1, 2, -1);
+        PriorityMotor frontLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
+        PriorityMotor backLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backLeftMotor"), "backLeftMotor", 1, 2, 1);
+        PriorityMotor frontRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontRightMotor"), "frontRightMotor", 1, 2, -1);
+        PriorityMotor backRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backRightMotor"), "backRightMotor", 1, 2, -1);
 
         /*
         For frontRightMotor and backRightMotor, notice how the multiplier is -1. This is because I don't have
@@ -49,10 +46,10 @@ public class MyOpmode extends LinearOpMode {
         so I make multiplier -1 to account for that.
          */
 
-        hardwareQueue.addDevice(RealfrontLeftMotor);
-        hardwareQueue.addDevice(RealbackLeftMotor);
-        hardwareQueue.addDevice(RealfrontRightMotor);
-        hardwareQueue.addDevice(RealbackRightMotor);
+        hardwareQueue.addDevice(frontLeftMotor);
+        hardwareQueue.addDevice(backLeftMotor);
+        hardwareQueue.addDevice(frontRightMotor);
+        hardwareQueue.addDevice(backRightMotor);
 
         waitForStart();
 
@@ -69,10 +66,10 @@ public class MyOpmode extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            RealfrontLeftMotor.setTargetPower(frontLeftPower);
-            RealbackLeftMotor.setTargetPower(backLeftPower);
-            RealfrontRightMotor.setTargetPower(frontRightPower);
-            RealbackRightMotor.setTargetPower(backRightPower);
+            frontLeftMotor.setTargetPower(frontLeftPower);
+            backLeftMotor.setTargetPower(backLeftPower);
+            frontRightMotor.setTargetPower(frontRightPower);
+            backRightMotor.setTargetPower(backRightPower);
 
             hardwareQueue.update();
         }
