@@ -36,6 +36,11 @@ public class RyanOpmode extends LinearOpMode {
         PriorityMotor backLeftMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backLeftMotor"), "backLeftMotor", 1, 2, 1);
         PriorityMotor frontRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontRightMotor"), "frontRightMotor", 1, 2, -1);
         PriorityMotor backRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("backRightMotor"), "backRightMotor", 1, 2, -1);
+        // Declare our motors
+        // Make sure your ID's match your configuration
+        // Reverse the right side motors. This may be wrong for your setup.
+        // If your robot moves backwards when commanded to go forwards,
+        // reverse the left side instead.
 
         /*
         For frontRightMotor and backRightMotor, notice how the multiplier is -1. This is because I don't have
@@ -65,6 +70,10 @@ public class RyanOpmode extends LinearOpMode {
             double backLeftPower = (y - x + rx) / denominator;
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
+
+            // Denominator is the largest motor power (absolute value) or 1
+            // This ensures all the powers maintain the same ratio,
+            // but only if at least one is out of the range [-1, 1]
 
             frontLeftMotor.setTargetPower(frontLeftPower);
             backLeftMotor.setTargetPower(backLeftPower);
