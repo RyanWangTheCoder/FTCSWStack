@@ -42,7 +42,7 @@ public class LucasOpMode extends LinearOpMode {
             double rotX = x * Math.cos(-botHeading) - y * Math.sin(-botHeading);
             double rotY = x * Math.sin(-botHeading) + y * Math.cos(-botHeading);
 
-            rotX = rotX * 1.1;  // Counteract imperfect strafing
+            rotX = rotX * 1.1;
 
             double denominator = Math.max(Math.abs(rotY) + Math.abs(rotX) + Math.abs(rx), 1);
             double frontLeftPower = (rotY + rotX + rx) / denominator;
@@ -65,10 +65,10 @@ public class LucasOpMode extends LinearOpMode {
             );
             hardwareQueue.addDevice(myMotor);
             waitForStart();
-            double x = 0;
+            double x1 = 0;
             while (opModeIsActive()) {
                 myMotor.setTargetPower(Math.sin(x));
-                x += 0.000001;
+                x1 += 0.000001;
                 hardwareQueue.update();
             }
         }
