@@ -20,13 +20,26 @@ public class LeoPIDController {
     double lastError = 0;
     double lastReference = 0;
     double deltaError = 0;
+    double xc = 0;
+    double xp = 0;
+
+    public void resetIntegral(){
+        integralSum = 0;
+    }
 
     ElapsedTime timer = new ElapsedTime();
 
     public double update(double reference, double position){
+        if(reference != lastReference){
+            integralSum = 0;
+        }
         double error = reference - position;
         deltaError = error - lastError;
-        double derivative = deltaError/timer.seconds();
+
+        xc = 0.8 * xp + 0.2 * deltaError;
+        xp = xc;
+
+        double derivative = xc/timer.seconds();
         integralSum = integralSum + error * timer.seconds();
         lastError = error;
         lastReference = reference;
