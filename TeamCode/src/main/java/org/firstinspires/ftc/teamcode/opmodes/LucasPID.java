@@ -4,13 +4,21 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class LucasPID {
     public static void main() {
-        double Kp = 0.3;
-        double Ki = 0.5;
-        double Kd = 0.7; //random values
-        double reference = 0.9;
+        double p = 0;
+        double i = 0;
+        double d = 0;
+        double reference = 0;
         double error = 0;
-        double lastError = 123;
+        double motorPosition = 0;
+        double lastError = 0;
+        double integralSum = 0;
 
         ElapsedTime time = new ElapsedTime();
+        error = reference - motorPosition;
+        integralSum = integralSum + (error * time.seconds() );
+        double derivative = (error - lastError) / time.seconds();
+        double out = error * p + integralSum * i + derivative * d;
+        lastError = error;
+        time.reset();
     }
 }
