@@ -20,7 +20,12 @@ public class RyanPID {
     double lastError = 0;
     int counter = 0;
     double loopTime = 0.0;
-    public double update(double error){
+
+    public void resetIntegral() {
+        integral = 0;
+    }
+
+    public double update(double error, double min, double max){
         if (counter == 0) {
             lastLoopTime = System.nanoTime() - 10000000;
         }
@@ -36,7 +41,7 @@ public class RyanPID {
         lastError = error;
         counter ++;
 
-        return proportion + integral + derivative;
+        return Utils.minMaxClip(proportion + integral + derivative, min, max);
     }
 
     public void updatePID(double p, double i, double d) {
