@@ -5,7 +5,7 @@ import static org.firstinspires.ftc.teamcode.utils.Globals.GET_LOOP_TIME;
 import java.util.ArrayList;
 
 public class HardwareQueue {
-    public ArrayList<PriorityDevice> devices = new ArrayList<>();
+    public static ArrayList<PriorityDevice> devices = new ArrayList<>();
     public double targetLoopLength = 0.008; // sets the target loop time in seconds
 
     public PriorityDevice getDevice(String name){
