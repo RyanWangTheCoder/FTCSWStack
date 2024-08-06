@@ -2,8 +2,7 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class LucasPID {
-    public static void main() {
+public class LucasPID {{
         double p = 0;
         double i = 0;
         double d = 0;
