@@ -19,7 +19,7 @@ public class RyanRobot {
     public final RyanIntake intake;
     public RyanRobot(HardwareMap hardwareMap) {
         hardwareQueue = new HardwareQueue();
-        intake = new RyanIntake(hardwareMap, hardwareQueue);
+        intake = new RyanIntake(hardwareMap);
 
     }
 

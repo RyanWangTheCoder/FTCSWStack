@@ -19,10 +19,10 @@ public class RyanIntake {
     public MotorState motorState;
     public static double intakePower = 1.0;
 
-    public RyanIntake(HardwareMap hardwareMap, HardwareQueue hardwareQueue) {
+    public RyanIntake(HardwareMap hardwareMap) {
         intake = new PriorityMotor(hardwareMap.get(DcMotorEx.class, "intake"), "intake", 1, 2, -1);
         this.motorState = MotorState.OFF;
-        hardwareQueue.addDevice(intake);
+        HardwareQueue.addDevice(intake);
     }
 
     public void update() {
