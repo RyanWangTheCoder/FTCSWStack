@@ -16,10 +16,10 @@ public class LucasOpMode extends LinearOpMode {
         PriorityMotor frontRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
         PriorityMotor backRightMotor = new PriorityMotor((DcMotorEx) hardwareMap.dcMotor.get("frontLeftMotor"), "frontLeftMotor", 1, 2, 1);
 
-        HardwareQueue.addDevice(frontLeftMotor);
-        HardwareQueue.addDevice(backLeftMotor);
-        HardwareQueue.addDevice(frontRightMotor);
-        HardwareQueue.addDevice(backRightMotor);
+        hardwareQueue.addDevice(frontLeftMotor);
+        hardwareQueue.addDevice(backLeftMotor);
+        hardwareQueue.addDevice(frontRightMotor);
+        hardwareQueue.addDevice(backRightMotor);
 
         waitForStart();
 

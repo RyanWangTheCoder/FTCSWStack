@@ -17,7 +17,7 @@ public class HardwareQueue {
         return null;
     }
 
-    public static void addDevice(PriorityDevice device) {
+    public void addDevice(PriorityDevice device) {
         devices.add(device);
     }
 
