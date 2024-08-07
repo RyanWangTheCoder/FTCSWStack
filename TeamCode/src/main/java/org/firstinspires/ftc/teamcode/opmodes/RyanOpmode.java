@@ -51,10 +51,10 @@ public class RyanOpmode extends LinearOpMode {
         so I make multiplier -1 to account for that.
          */
 
-        HardwareQueue.addDevice(frontLeftMotor);
-        HardwareQueue.addDevice(backLeftMotor);
-        HardwareQueue.addDevice(frontRightMotor);
-        HardwareQueue.addDevice(backRightMotor);
+        hardwareQueue.addDevice(frontLeftMotor);
+        hardwareQueue.addDevice(backLeftMotor);
+        hardwareQueue.addDevice(frontRightMotor);
+        hardwareQueue.addDevice(backRightMotor);
 
         waitForStart();
 
