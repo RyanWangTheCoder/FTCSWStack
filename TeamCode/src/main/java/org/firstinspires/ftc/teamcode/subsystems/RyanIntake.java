@@ -41,4 +41,11 @@ public class RyanIntake {
                 break;
         }
     }
+    public void setOff() { motorState = MotorState.OFF; }
+
+    public void setOn() { motorState = MotorState.ON; }
+
+    public void setAntiStall() { motorState = MotorState.SOFT_REVERSED; }
+
+    public void setReverse() { motorState = MotorState.REVERSED; }
 }
