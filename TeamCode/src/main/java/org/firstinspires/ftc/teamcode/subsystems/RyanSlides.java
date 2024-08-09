@@ -14,7 +14,6 @@ public class RyanSlides {
         ON,
         OFF,
     }
-    public PriorityMotor slidesMotor;
     public final PriorityMotor slides;
     public MotorState motorState;
     public static final double KP = 1;
@@ -31,8 +30,7 @@ public class RyanSlides {
     public void update() {
         switch (motorState) {
             case ON:
-                double currentPosition = slidesMotor.motor[0].getCurrentPosition();
-                slidesMotor.setTargetPower(slidesPower);
+                double currentPosition = slides.motor[0].getCurrentPosition();
                 slides.setTargetPower(Utils.minMaxClip((targetPosition - currentPosition) * KP+powerConstantTerm, -1.0, 1.0));
                 break;
             case OFF:
