@@ -12,7 +12,7 @@ public class LucasIntake {
         ON,
         OFF,
         REVERSE,
-        SOFT_REVERSE
+        ANTISTALL;
     }
 
     public PriorityMotor intake;
@@ -36,7 +36,7 @@ public class LucasIntake {
             case REVERSE:
                 intake.setTargetPower(-1.0);
                 break;
-            case SOFT_REVERSE:
+            case ANTISTALL:
                 intake.setTargetPower(-0.35);
                 break;
         }
