@@ -39,4 +39,6 @@ public class RyanSlides {
 
         }
     }
+    public void setTargetPosition(double targetPosition) { this.targetPosition = targetPosition; }
+
 }

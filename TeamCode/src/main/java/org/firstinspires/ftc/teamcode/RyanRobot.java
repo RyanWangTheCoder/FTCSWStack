@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.subsystems.RyanIntake;
+import org.firstinspires.ftc.teamcode.subsystems.RyanSlides;
 import org.firstinspires.ftc.teamcode.utils.Globals;
 import org.firstinspires.ftc.teamcode.utils.Pose2d;
 import org.firstinspires.ftc.teamcode.utils.Vector3;
@@ -17,9 +18,11 @@ import org.firstinspires.ftc.teamcode.utils.priority.HardwareQueue;
 public class RyanRobot {
     public HardwareQueue hardwareQueue;
     public final RyanIntake intake;
+    public final RyanSlides slides;
     public RyanRobot(HardwareMap hardwareMap) {
         hardwareQueue = new HardwareQueue();
         intake = new RyanIntake(hardwareMap, hardwareQueue);
+        slides = new RyanSlides(hardwareMap, hardwareQueue);
 
     }
 
@@ -31,6 +34,7 @@ public class RyanRobot {
         hardwareQueue.update();
 
         intake.update();
+        slides.update();
     }
 
 }
