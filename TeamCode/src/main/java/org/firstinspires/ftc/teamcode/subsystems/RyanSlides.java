@@ -17,10 +17,13 @@ public class RyanSlides {
     }
     public final PriorityMotor slides;
     public MotorState motorState;
+    public static double ticksToInches = 0.04132142857142857;
+
     public static final double KP = 1;
     public static final double powerConstantTerm = 0.05;
     public static double slidesPower = 1.0;
     RyanSensors sensor;
+
 
     private double targetPosition;
 
@@ -34,7 +37,7 @@ public class RyanSlides {
     public void update() {
         switch (motorState) {
             case ON:
-                double currentPosition = sensor.getSlidesPos();
+                double currentPosition = sensor.getSlidesPos()*ticksToInches;
                 slides.setTargetPower(Utils.minMaxClip((targetPosition - currentPosition) * KP+powerConstantTerm, -1.0, 1.0));
                 break;
             case OFF:
