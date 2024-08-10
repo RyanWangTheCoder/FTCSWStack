@@ -8,6 +8,7 @@ import android.util.Log;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.sensors.RyanSensors;
 import org.firstinspires.ftc.teamcode.subsystems.RyanIntake;
 import org.firstinspires.ftc.teamcode.subsystems.RyanSlides;
 import org.firstinspires.ftc.teamcode.utils.Globals;
@@ -19,10 +20,12 @@ public class RyanRobot {
     public HardwareQueue hardwareQueue;
     public final RyanIntake intake;
     public final RyanSlides slides;
+    public final RyanSensors sensor;
     public RyanRobot(HardwareMap hardwareMap) {
         hardwareQueue = new HardwareQueue();
         intake = new RyanIntake(hardwareMap, hardwareQueue);
-        slides = new RyanSlides(hardwareMap, hardwareQueue);
+        sensor = new RyanSensors(hardwareMap, hardwareQueue);
+        slides = new RyanSlides(hardwareMap, hardwareQueue, sensor);
 
     }
 

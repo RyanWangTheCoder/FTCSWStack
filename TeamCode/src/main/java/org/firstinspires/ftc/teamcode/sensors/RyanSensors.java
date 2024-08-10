@@ -32,10 +32,9 @@ public class RyanSensors {
     private double imuHeading = 0.0; //test
     public boolean useIMU; // don't change the value here. Change in drivetrain.
 
-    public RyanSensors(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanRobot robot) {
+    public RyanSensors(HardwareMap hardwareMap, HardwareQueue hardwareQueue) {
         this.hardwareMap = hardwareMap;
         this.hardwareQueue = hardwareQueue;
-        this.robot = robot;
 
         initSensors(hardwareMap);
     }

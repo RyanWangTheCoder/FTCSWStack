@@ -21,12 +21,14 @@ public class RyanSlides {
     public static final double powerConstantTerm = 0.05;
     public static double slidesPower = 1.0;
     RyanSensors sensor;
+
     private double targetPosition;
 
-    public RyanSlides(HardwareMap hardwareMap, HardwareQueue hardwareQueue) {
+    public RyanSlides(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanSensors sensor) {
         slides = new PriorityMotor(hardwareMap.get(DcMotorEx.class, "slides"), "slides", 1, 2, -1);
         this.motorState = MotorState.OFF;
         hardwareQueue.addDevice(slides);
+        this.sensor = sensor;
     }
 
     public void update() {
