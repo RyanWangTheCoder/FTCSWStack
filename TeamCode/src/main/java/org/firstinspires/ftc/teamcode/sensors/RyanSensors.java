@@ -29,7 +29,7 @@ public class RyanSensors {
 
     private IMU imu;
     private long imuLastUpdateTime = System.currentTimeMillis();
-    private double imuHeading = 0.0;
+    private double imuHeading = 0.0; //test
     public boolean useIMU; // don't change the value here. Change in drivetrain.
 
     public RyanSensors(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanRobot robot) {
