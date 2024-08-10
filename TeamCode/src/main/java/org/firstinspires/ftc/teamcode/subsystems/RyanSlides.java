@@ -4,6 +4,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.sensors.RyanSensors;
 import org.firstinspires.ftc.teamcode.utils.Utils;
 import org.firstinspires.ftc.teamcode.utils.priority.HardwareQueue;
 import org.firstinspires.ftc.teamcode.utils.priority.PriorityMotor;
@@ -19,6 +20,7 @@ public class RyanSlides {
     public static final double KP = 1;
     public static final double powerConstantTerm = 0.05;
     public static double slidesPower = 1.0;
+    RyanSensors sensor;
     private double targetPosition;
 
     public RyanSlides(HardwareMap hardwareMap, HardwareQueue hardwareQueue) {
@@ -30,7 +32,7 @@ public class RyanSlides {
     public void update() {
         switch (motorState) {
             case ON:
-                double currentPosition = slides.motor[0].getCurrentPosition();
+                double currentPosition = sensor.getSlidesPos();
                 slides.setTargetPower(Utils.minMaxClip((targetPosition - currentPosition) * KP+powerConstantTerm, -1.0, 1.0));
                 break;
             case OFF:
