@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.utils.priority.PriorityMotor;
 
 public class LyliaIntake {
 
-    DcMotorEx intakeMotor = new HardwareMap.get(DcMotorEx());
+ //   DcMotorEx intakeMotor = new HardwareMap.get(DcMotorEx());
 
     enum State {
         ON,
@@ -18,7 +18,7 @@ public class LyliaIntake {
     }
 
     public void update(){
-        switch ()
+ //       switch
 
     }
 }
