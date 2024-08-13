@@ -19,10 +19,9 @@ public class RyanDrivetrain {
     private RyanSensors sensors;
     public RyanRobot robot;
 
-    public RyanDrivetrain(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanSensors sensors, RyanRobot robot) {
+    public RyanDrivetrain(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanSensors sensors) {
         this.hardwareQueue = hardwareQueue;
         this.sensors = sensors;
-        this.robot = robot;
 
         leftFront = new PriorityMotor(hardwareMap.get(DcMotorEx.class, "leftFront"),
                 "leftFront",
