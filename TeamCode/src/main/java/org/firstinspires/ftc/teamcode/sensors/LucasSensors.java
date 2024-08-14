@@ -4,6 +4,7 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.utils.priority.HardwareQueue;
+import org.firstinspires.ftc.teamcode.utils.priority.PriorityMotor;
 
 public class LucasSensors {
     private LynxModule controlHub, expansionHub;
