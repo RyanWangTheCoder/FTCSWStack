@@ -9,9 +9,12 @@ import org.firstinspires.ftc.teamcode.utils.priority.PriorityServo;
 public class LucasV4Bar {
     Servo servo1;
     Servo servo2;
-    Servo flipper1;
-    Servo flipper2;
+    PriorityServo flipper1;
+    PriorityServo flipper2;
+    PriorityServo flipTurner;
     PriorityServo servos;
+    double pi = 3.1415926535897932384;
+    public double theFlippersAreBROKEN;
 
     HardwareQueue hardwareQueue = new HardwareQueue();
 
@@ -20,18 +23,40 @@ public class LucasV4Bar {
         servo2 = hardwareMap.get(Servo.class, "rightArmServo");
         flipper1 = hardwareMap.get(Servo.class, "leftFlipper");
         flipper2 = hardwareMap.get(Servo.class, "rightFlipper");
-        servos = new PriorityServo(new Servo[] {servo1,servo2}, "servos", PriorityServo.ServoType.SPEED,  1.0, 0,  1,  0,  false,  3,  1, new double[]{1, -1});
-        }
+        flipTurner = hardwareMap.get(Servo.class, "flipTurner");
+        servos =
+    }
 
     public void setAngle(double angle) {
         servos.setTargetAngle(angle,1.0);
     }
 
-    public void releaseLeftBall() {
-        flipper1.setPosition(0);
+    public void releaseRightBall() {
+        checkFlippersFlipped();
+        if (AreFlippersFlipped) {
+            flipper2.
+        }
     }
 
     public void releaseRightBall() {
-        flipper2.setPosition(0);
+        if (boolean AreFlippersFlipped = false;) {
+            flipper2.setPosition(0);
+        }
+        if (AreFlippersFlipped = true;) {
+            flipper2.setPosition(pi);
+        }
+    }
+    boolean AreFlippersFlipped = true;
+
+    private void checkFlippersFlipped() {
+        if (flipTurner.getPosition() == pi) {
+            AreFlippersFlipped = true;
+        }
+        if (flipTurner.getPosition() == 0) {
+            AreFlippersFlipped = false;
+        }
+        if (flipTurner.getPosition() != 0 && flipTurner.getPosition() != pi) {
+            theFlippersAreBROKEN = 1;
+        }
     }
 }
