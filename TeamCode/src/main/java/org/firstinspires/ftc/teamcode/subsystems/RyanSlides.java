@@ -26,6 +26,7 @@ public class RyanSlides {
 
 
     private double targetPosition;
+    private double currentPosition;
 
     public RyanSlides(HardwareMap hardwareMap, HardwareQueue hardwareQueue, RyanSensors sensor) {
         slides = new PriorityMotor(hardwareMap.get(DcMotorEx.class, "slides"), "slides", 1, 2, -1);
@@ -37,7 +38,7 @@ public class RyanSlides {
     public void update() {
         switch (motorState) {
             case ON:
-                double currentPosition = sensor.getSlidesPos()*ticksToInches;
+                currentPosition = sensor.getSlidesPos()*ticksToInches;
                 slides.setTargetPower(Utils.minMaxClip((targetPosition - currentPosition) * KP+powerConstantTerm, -1.0, 1.0));
                 break;
             case OFF:
@@ -47,5 +48,8 @@ public class RyanSlides {
         }
     }
     public void setTargetPosition(double targetPosition) { this.targetPosition = targetPosition; }
+    public double getCurrPos(){
+        return currentPosition;
+    }
 
 }

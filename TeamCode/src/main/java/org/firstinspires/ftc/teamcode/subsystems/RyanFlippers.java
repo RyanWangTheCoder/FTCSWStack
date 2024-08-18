@@ -27,6 +27,12 @@ public class RyanFlippers {
         hardwareQueue.addDevice(flipperServo_right);
     }
 
+    public boolean leftInPosition(){
+        return flipperServo_left.inPosition();
+    }
+    public boolean rightInPosition(){
+        return flipperServo_right.inPosition();
+    }
     public void openLeft() {
         flipperServo_left.setTargetAngle(1.0, 1.0);
     }

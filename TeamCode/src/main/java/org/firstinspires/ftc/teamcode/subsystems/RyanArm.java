@@ -29,6 +29,9 @@ public class RyanArm {
         hardwareQueue.addDevice(armServo);
 
     }
+    public boolean armInPosition(){
+        return armServo.inPosition();
+    }
     public void setHomePosition(){
         armServo.setTargetAngle(homePosition, 1.0);
     }

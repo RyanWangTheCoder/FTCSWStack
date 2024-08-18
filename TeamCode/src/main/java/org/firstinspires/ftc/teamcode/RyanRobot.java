@@ -61,6 +61,7 @@ public class RyanRobot {
     }
     public void moveArmToScoringPosition(){
         arm.setScoringPosition();
+
     }
     public void moveArmToHomePosition(){
         arm.setHomePosition();
@@ -95,20 +96,54 @@ public class RyanRobot {
     public void turnOffIntake(){
         intake.setOff();
     }
-    public enum Deposit_States {
-        INTAKE_BALLS,
-        RAISE_SLIDES,
-        RAISE_ARM,
-        WAIT_FOR_DEPOSIT,
-        ROTATE_WRIST,
-        OPEN_FLIPPER,
-
-
-
-
+    private DepositStates depositStates;
+    private boolean readyToStart = false;
+    private double targetHeight = 1.0;
+    public enum DepositStates{
+        STANDBY,
+        CLOSE,
+        TURN,
+        LIFT,
+        DEPOSITReady,
+        DEPOSIT
     }
-
     public void depositSequence(){
+        switch(depositStates) {
+            case STANDBY:
+                openBothFlippers();
+                moveArmToHomePosition();
+                setNormalWristPosition();
+                slides.setTargetPosition(0.0);
+
+                if (readyToStart){
+                    depositStates = DepositStates.CLOSE;
+                    readyToStart = false;
+                }
+                break;
+            case CLOSE:
+                closeBothFlippers();
+                //if target ball(s) are grabbed, transition to TURN state
+                if(flippers.leftInPosition() && flippers.rightInPosition()){
+                    depositStates = DepositStates.TURN;
+                }
+                break;
+            // flip arm
+            case TURN:
+                moveArmToScoringPosition();
+
+                //if arm angle is reached, transition to LIFT state
+                if(arm.armInPosition()){
+                    depositStates = DepositStates.LIFT;
+                }
+                break;
+            // raise arm up
+            case LIFT:
+                slides.setTargetPosition(targetHeight);
+
+                if(slides.getCurrPos() == targetHeight) {depositStates = DepositStates.DEPOSITReady;}
+                break;
+        }
+
 
     }
 
