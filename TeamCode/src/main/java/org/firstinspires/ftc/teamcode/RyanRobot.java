@@ -174,8 +174,22 @@ public class RyanRobot {
                 }
                 break;
         }
-
-
+    }
+    public void reset(){
+        depositStates = DepositStates.STANDBY;
     }
 
+    public void startDepositSetup() {readyToStart = true;}
+
+    public void startDepositBalls(){ready = true;}
+
+    public void setTargetHeight(double target){targetHeight = target;}
+
+
+    public void rotateWrist(){
+        normalWrist=false;
+    }
+    public void dropRight(){
+        dropLeft=false;
+    }
 }
