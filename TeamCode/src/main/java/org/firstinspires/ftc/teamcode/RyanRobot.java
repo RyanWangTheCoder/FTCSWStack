@@ -98,12 +98,16 @@ public class RyanRobot {
     }
     private DepositStates depositStates;
     private boolean readyToStart = false;
+    private boolean ready = false;
+    private boolean normalWrist = true;
+    private boolean dropLeft = true;
     private double targetHeight = 1.0;
     public enum DepositStates{
         STANDBY,
         CLOSE,
         TURN,
         LIFT,
+        ROTATE,
         DEPOSITReady,
         DEPOSIT
     }
@@ -140,7 +144,34 @@ public class RyanRobot {
             case LIFT:
                 slides.setTargetPosition(targetHeight);
 
-                if(slides.getCurrPos() == targetHeight) {depositStates = DepositStates.DEPOSITReady;}
+                if(slides.getCurrPos() == targetHeight) {depositStates = DepositStates.ROTATE;}
+                break;
+            case ROTATE:
+                if (normalWrist){
+                    setNormalWristPosition();
+                }
+                else {
+                    setRotatedWristPosition();
+                }
+                if(wrist.wristInPosition()) {
+                    depositStates = DepositStates.DEPOSITReady;
+                }
+
+            // wait for robot to get into position, any flips, etc
+            case DEPOSITReady:
+                if(ready){depositStates = DepositStates.DEPOSIT; ready = false;}
+                break;
+            //release the balls
+            case DEPOSIT:
+                if (normalWrist&&dropLeft){
+                    openLeftFlipper();
+                } else if (normalWrist&&!dropLeft) {
+                    openRightFlipper();
+                } else if (!normalWrist&&dropLeft) {
+                    openRightFlipper();
+                } else if (!normalWrist&&!dropLeft) {
+                    openLeftFlipper();
+                }
                 break;
         }
 

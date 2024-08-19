@@ -25,4 +25,7 @@ public class RyanWrist {
     public void rotatedWrist(){
         wristServo.setTargetAngle(Math.PI, 1.0);
     }
+    public boolean wristInPosition(){
+        return wristServo.inPosition();
+    }
 }
